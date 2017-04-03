@@ -1,0 +1,49 @@
+pragma solidity ^0.4.9;
+
+contract Daniel{
+    
+    uint private count;
+        bytes32 choice;
+        bytes32 role;
+        uint experience;
+        bytes32 language;
+        bytes32 asset;
+        bytes32 whatIs;
+    
+    
+   
+    function getchoice() constant returns (bytes32 choiceVar) {
+        choice= "tokenizedTorrentSystem";
+    
+    }
+    
+    function getrole() returns(bytes32 role){
+        role= "superdao trainee";
+        return role;
+    }
+    
+    function getexperience() returns(uint experience){
+        experience = 0;
+        return experience;
+    }
+    
+    function getlanguage() returns(bytes32 language){
+        language = "Javascript";
+        return language;
+    }
+    
+    function getasset() returns(bytes32 asset){
+        asset= "value added asset";
+        return asset;
+    }
+    
+    function getwhatis() returns(bytes32 whatis){
+        whatis= "superdao is a enthereum progrom";
+        return whatis;
+    }
+    
+     function (){
+        throw;
+    }
+
+}

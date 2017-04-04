@@ -1,44 +1,50 @@
-pragma solidity 0.4.10;
-    contract Danielexam {
-        function Danielexam () {
-            owner = msg.sender;
-            uint  creationTime = now;
-        }
+pragma solidity ^0.4.10;
+
+contract application {
+
+
+    function application () {
+        owner = msg.sender;
+    }
+
     address owner;
-    
-     struct Details {
-         bytes32 dappChoice;
-         bytes32 role;
-         uint experience;
-         bytes32 languageofuse;
-         bytes32 accessQuality;
-         bytes32 whatisSuperdao;
-     }
-     
-     mapping (uint => Details) list;
-     Details d = list[0];
-     
-     function check (){
-         if(msg.sender != owner) throw;
-     }
-     
-    function setDetails (bytes32 dappChoice, bytes32 role, uint experience, bytes32 langaugeofuse, bytes32 accessQuality, bytes32 whatisSuperdao){
-     check();
-     d.dappChoice = dappChoice;
-     d.role = role;
-     d.experience = experience;
-     d.accessQuality = accessQuality;
-     d.languageofuse;
-     d.whatisSuperdao = whatisSuperdao;
+
+    struct Details {
+        bytes32 dappChoice;
+        bytes32 role;
+        uint experience;
+        bytes32 languageOfExperience;
+        bytes32 assetQuality;
+        bytes32 whatIsSuperDAO;
     }
-    function getDetails ()constant returns (bytes32, bytes32, uint, bytes32, bytes32, bytes32){
+
+    mapping (uint => Details) list;
+
+    modifier check () {
+        if (msg.sender != owner) throw;
+        _;
+    }
+
+
+    function setDetails (bytes32 dappChoice, bytes32 role, uint experience, bytes32 language, bytes32 assetQuality, bytes32 whatIsSuperDAO) check {
+        list[0].dappChoice = dappChoice;
+        list[0].role = role;
+        list[0].experience = experience;
+        list[0].languageOfExperience = language;
+        list[0].assetQuality = assetQuality;
+        list[0].whatIsSuperDAO = whatIsSuperDAO;
+    }
+
+    function getDetails () constant returns (bytes32, bytes32, uint, bytes32, bytes32, bytes32) {
         return(
-            d.dappChoice,
-            d.role,
-            d.experience,
-            d.accessQuality,
-            d.languageofuse,
-            d.whatisSuperdao);
+            list[0].dappChoice,
+            list[0].role,
+            list[0].experience,
+            list[0].languageOfExperience,
+            list[0].assetQuality,
+            list[0].whatIsSuperDAO
+            );
     }
-    }
-     
+
+
+}

@@ -1,0 +1,64 @@
+pragma solidity ^0.4.10;
+
+contract DataProfile{
+    
+    string public name;
+    
+    address public owner;
+
+	function Filtered(){
+
+		owner = msg.sender;
+
+	}
+
+	modifier onlyOwner{
+		if (msg.sender != owner){
+			throw;
+		}
+		else
+		{
+			_;
+		}
+	}
+
+	function DataProfile(string _newName) onlyOwner{
+        name = _newName;
+    }
+    
+
+	bytes32 post;
+	uint    codingExperience;
+	bytes32 programmingLanguage;
+	bytes32 assetQuality;
+	bytes32 SuperDAO;
+
+	function setCv(bytes32 post, uint codingExperience, bytes32 programmingLanguage, bytes32 assetQuality, bytes32 SuperDAO) onlyOwner{
+
+	post = "Ethereum Junior Developer";
+	codingExperience = 2;
+	programmingLanguage = "PHP";
+	assetQuality =         "Problem Solving";
+	SuperDAO =             "A DAO";
+
+	}
+
+	function getPost()  constant returns(bytes32)  {
+		return post;
+	}
+	function getCodingExperience() constant  returns(uint)  {
+		return codingExperience;
+	}
+	
+	function getProgrammingLanguage() constant returns(bytes32)  {
+		return programmingLanguage;
+	}
+	function getAssetQuality() constant returns(bytes32)  {
+		return assetQuality;
+	}
+
+	function getSuperDAO() constant returns(bytes32)  {
+		return SuperDAO;
+	}
+}
+
